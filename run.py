@@ -23,9 +23,12 @@ async def create_file_session():
         print("File Session đang chạy:", file_name)
         await app.start()
         me = await app.get_me()
+
         for i in range(number_group):
             number = i + 1
-            await app.create_group(f"Group Create by Tool : {number}", me.id)
+            data = await app.create_group(f"Group Create by Tool : {number}", me.id)
+
+            await app.send_message(data.id, "1")
         print("Đang trong thời gian nghỉ...")
         time.sleep(time_sleep)
 
